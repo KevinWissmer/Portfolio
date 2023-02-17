@@ -1,0 +1,135 @@
+<div class="content_wrapper_all" #scrollMe>
+
+
+
+  <div class="content_wrapper_left">
+
+    <div class="headline_wrapper" [ngStyle]="{'border-color': uiService.colorscheme[0]}">
+      <div class="btn_fan" *ngFor="let fanIndex of [0,1,2]"
+        [ngStyle]="{'background-color': uiService.colorscheme[2 - fanIndex], 'transform': 'rotate(-' + (45 - fanIndex * 15)  + 'deg)'}">
+      </div>
+      <h1 [ngStyle]="{'color': uiService.colorscheme[0]}">
+        {{textService.contactPage.actual[0]}}
+      </h1>
+    </div>
+
+
+    <div class="general_info_wrapper">
+      <div class="map_wrapper">
+        <img class="map_img" src="../../assets/img/map1.jpg" alt="" srcset="">
+        <img class="map_marker" [ngStyle]="{'filter': uiService.colorscheme[4]}"
+          src="../../assets/img/logo/map-marker.png" alt="" srcset="">
+      </div>
+      <div class="general_info_content" [ngStyle]="{'color': uiService.colorscheme[0]}">
+        <h2 [ngStyle]="{'border-color': uiService.colorscheme[0]}">Kevin Wißmer</h2>
+        <p>{{textService.contactPage.actual[1]}}</p>
+        <p>kevin.wissmer@mail.de</p>
+      </div>
+    </div>
+
+
+    <div class="element_content_footer">
+
+      <div class="link_btn_wrapper" *ngFor="let link of links" >
+        <a href="{{link.link}}" class="headline_wrapper headline_wrapper_link"  [ngStyle]="{'border-color': uiService.colorscheme[0]}">
+          <div class="btn_fan" *ngFor="let fanIndex of [0,1,2]"
+            [ngStyle]="{'background-color': uiService.colorscheme[2 - fanIndex], 'transform': 'rotate(-' + (45 - fanIndex * 15)  + 'deg)'}">
+          </div>
+          <div class="btn_fan_text" [ngStyle]="{'color': uiService.colorscheme[0]}">
+            {{link.name}}
+          </div>
+          <div class="btn_box">
+            <div *ngFor="let fan of [0,1,2]; index as k;" class="arrow_right" [ngStyle]="{'left': - (k) * 10  + 'px', 'animation-delay': 100 * k +'ms',
+                       'border-top': '3px solid ' + uiService.colorscheme[0],
+                       'border-right': '3px solid ' + uiService.colorscheme[1]}"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="switch_footer" (click)="scrollTo('bottom')" [ngStyle]="{'color': uiService.colorscheme[0]}">
+      <div class="switch_footer_content" [ngStyle]="{'top': this.directionStatus == 'top' ? 0 : 50 + 'px'}">
+        <div class="up_down_btn_box btn_box"
+          [ngStyle]="{'transform':  this.directionStatus == 'top' ? 'rotate(90deg)' : 'rotate(-90deg)' }">
+          <div *ngFor="let fan of [0,1,2]; index as k;" class="up_down_btn_arrow arrow_right" [ngStyle]="{'left': - (k) * 10  + 'px', 'animation-delay': 100 * k +'ms',
+                     'border-top': '3px solid ' + uiService.colorscheme[0],
+                     'border-right': '3px solid ' + uiService.colorscheme[1]}"></div>
+        </div>
+        <p *ngIf="this.directionStatus == 'top'">{{textService.contactPage.actual[9]}}</p>
+        <p *ngIf="this.directionStatus == 'bottom'">{{textService.contactPage.actual[10]}}</p>
+        <div class="up_down_btn_box btn_box"
+          [ngStyle]="{'transform':  this.directionStatus == 'top' ? 'rotate(90deg)' : 'rotate(-90deg)' }">
+          <div *ngFor="let fan of [0,1,2]; index as k;" class="up_down_btn_arrow arrow_right" [ngStyle]="{'left': - (k) * 10  + 'px', 'animation-delay': 100 * k +'ms',
+                     'border-top': '3px solid ' + uiService.colorscheme[0],
+                     'border-right': '3px solid ' + uiService.colorscheme[1]}"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="middle_line" [ngStyle]="{'background-color': uiService.colorscheme[1]}"></div>
+
+  <div class="content_wrapper_right">
+
+    <form autocomplete="off" class="input_form_wrapper" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+      <div class="switch_footer" (click)="scrollTo('top')" [ngStyle]="{'color': uiService.colorscheme[0]}">
+
+      </div>
+      <div class="  form_header_wrapper">
+      </div>
+
+      <div class="input_group">
+
+        <div class="input_field_wrapper">
+          <label [ngStyle]="{'color': uiService.colorscheme[1], 'margin-bottom': '5px'}" for="name"
+            class="input_label  ">{{textService.contactPage.actual[2]}}</label>
+          <input (focus)="contact_validation.name = true" type="text" id="name" class="input_element form__field text" required [(ngModel)]="contact.name"
+            name="name" #name="ngModel">
+        </div>
+        <label [ngClass]="{'input_lable_false_active': !this.contact_validation.name }" for="name"
+          class="input_label_false  ">{{textService.contactPage.actual[3]}}</label>
+      </div>
+
+      <div class="input_group">
+        <label [ngStyle]="{'color': uiService.colorscheme[1]}" for="email" class="input_label  ">{{textService.contactPage.actual[4]}}</label>
+
+        <div class="input_field_wrapper">
+          <input (focus)="contact_validation.email = true" type="email" id="Email" class="input_element form__field text" required [(ngModel)]="contact.email"
+            name="email" #email="ngModel" email="true">
+        </div>
+        <label [ngClass]="{'input_lable_false_active': !this.contact_validation.email }" for="email"
+          class="input_label_false  ">{{textService.contactPage.actual[5]}}</label>
+      </div>
+
+      <div class="input_group area_input_group">
+        <label [ngStyle]="{'color': uiService.colorscheme[1]}" for="message" class="input_label ">{{textService.contactPage.actual[6]}}</label>
+        <div class="input_field_wrapper input_field_wrapper_textfield" >
+          <textarea (focus)="contact_validation.message = true" id="Message" rows="6" minlength="10" maxlength="3000" class="area_input_element form__field text"
+            required [(ngModel)]="contact.message" name="message" #message="ngModel"></textarea>
+        </div>
+        <label [ngClass]="{'input_lable_false_active': !this.contact_validation.message }" for="message"
+          class="input_label_false ">{{textService.contactPage.actual[7]}}</label>
+      </div>
+
+      <div class=" btn_wrapper ">
+        <button type="submit" class="submit_btn" >
+          <div class="btn_light" [ngStyle]="{'background-color': uiService.colorscheme[1]}"></div>
+          <p [ngStyle]="{'color': uiService.colorscheme[0]}">{{textService.contactPage.actual[8]}}</p>
+          <div [ngStyle]="{'background-color': '#151515'}"></div>
+          <div [ngStyle]="{'background-color': '#151515'}"></div>
+        </button>
+      </div>
+
+      <div class="dialog_wrapper" *ngIf="this.messageSend"  >
+        <p [ngStyle]="{'color': uiService.colorscheme[0]}">{{textService.contactPage.actual[11]}} </p>
+        <div class="mail_animation_wrapper">
+          <img [ngStyle]="{'filter': uiService.whiteSmokefilter}" src="../../assets/img/logo/mail.png">
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+
+
+</div>

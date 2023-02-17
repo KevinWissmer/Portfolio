@@ -1,0 +1,93 @@
+<div class="main_wrapper">
+    <div (click)="uiService.closeImprintAndDataprotection()" class="imprint_wrapper"
+        [ngClass]="{'imprint_wrapper_open': uiService.imprintOpen }">
+        <app-imprint (click)="$event.stopPropagation()" class="imprint_content"
+            [ngClass]="{'imprint_content_open': uiService.imprintOpen }"></app-imprint>
+    </div>
+    <div class="header">
+        <img src="../../assets/img/logo/OWL_favicon.png" (click)="uiService.portfolioOpend = false; uiService.scrollLength = -0; uiService.clearRouteParam()"
+            [ngStyle]="{'filter': uiService.colorscheme[4]}" alt="Websitelogo" srcset="">
+
+        <div class="right_header_content">
+            <div class="color_palette_menu">
+                <div class="color_palette" [ngClass]="{'color_palette_open': !colorPaletteMenuOpen}">
+                    <div class="single_color" *ngFor=" let color of uiService.allColors" title="{{color.name}}"
+                        [ngStyle]="{'background-color': color.colors[0]}" (click)="uiService.changeScheme(color.name); switchColorPalette()">
+                    </div>
+                </div>
+                <div class="color_palette_icon">
+                    <img (click)="switchColorPalette()" src="../../assets/img/logo/color-palette.png"
+                        [ngClass]="{'color_palette_icon_open': !colorPaletteMenuOpen}"
+                        [ngStyle]="{'filter': uiService.colorscheme[4]}" alt="open color palette">
+                </div>
+            </div>
+            <div class="language_btn" (click)="textService.switchLanguage()"
+                [ngStyle]="{'color': uiService.colorscheme[0]}">
+                <div *ngIf="textService.actualLanguage == 'german'"> DE </div>
+                <div *ngIf="textService.actualLanguage == 'english'"> EN </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="middle_content_wrapper">
+        <div [ngStyle]="{'left': uiService.scrollLength + '%', 'width': sections.length * 100 + '%' }"
+            class="middle_content">
+            <div *ngFor="let section of sections; index as i;" class="middle_content_single_element">
+                <div class="string"></div>
+                <div class="component_wrapper">
+                    <app-start *ngIf="section === 'start'"></app-start>
+                    <app-skills *ngIf="section === 'skills'"></app-skills>
+                    <app-projects *ngIf="section === 'projects'"></app-projects>
+                    <app-contact *ngIf="section === 'contact'"></app-contact>
+                </div>
+                <div class="string"></div>
+                <div class="flag"
+                    [ngStyle]="{'left': 'calc('+ this.menuStepStart +'% + ('+ this.menuStepWidth +'% / 8) - ( 120px / 2 + 10px) / 2 + (' + i + '* '+ this.menuStepWidth +'% / 4 ))'}">
+                    <div class="flag_inside" [ngStyle]="{'background-color': uiService.colorscheme[1]}">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="side_box side_box_left">
+            <div class="btn_box" (click)="uiService.scrollLeft()">
+                <div *ngFor="let fan of sections; index as j;" class="arrow_right" [ngStyle]="{'right': - (sections.length - j -1) * 10  + 'px', 'animation-delay': 100 * (sections.length - j) +'ms',
+                    'border-left': '3px solid ' + uiService.colorscheme[0],
+                    'border-bottom': '3px solid ' + uiService.colorscheme[1]}"></div>
+            </div>
+        </div>
+        <div class="middle_box">
+
+            <div *ngFor="let section of sections; index as j" class="navbar_button_wrapper">
+                <div class="navtbtn_left_right_border"></div>
+                <div class="navtbtn_center_element">
+                    <div class="navtbtn_top_down_border"></div>
+                    <div class="navtbtn_center_center_element">
+                        <div class="navtbtn_text" (click)="uiService.scrollTo(section)"
+                            [ngStyle]="{'color':this.sections[-1 * uiService.scrollLength/100] != section ? uiService.colorscheme[1] : 'black'}">
+                            {{textService.pfWrapperPage.actual[j]}}
+                        </div>
+                    </div>
+                    <div class="navtbtn_top_down_border"></div>
+                </div>
+                <div class="navtbtn_left_right_border"></div>
+            </div>
+
+        </div>
+        <div class="side_box">
+            <div class="btn_box" (click)="uiService.scrollRight()">
+                <div *ngFor="let fan of sections; index as i;" class="arrow_left" [ngStyle]="{'left': - (i) * 10  + 'px', 'animation-delay': 100 * i +'ms',
+                     'border-top': '3px solid ' + uiService.colorscheme[0],
+                     'border-right': '3px solid ' + uiService.colorscheme[1]}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="imprint_footer_wrapper" [ngStyle]="{'color': uiService.colorscheme[0]}">
+    <p (click)="uiService.openImprintAndDataprotection()" [ngStyle]="{'border-color': uiService.colorscheme[0]}">
+        {{textService.pfWrapperPage.actual[4]}}</p>
+</div>

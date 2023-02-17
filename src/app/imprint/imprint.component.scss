@@ -1,0 +1,94 @@
+.element_content_wrapper {
+    width: 95%;
+    height: 96%;
+    overflow-y: auto;
+    background-color: #242424;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: inset 0px 1px 15px 2px rgb(0 0 0 / 75%);
+}
+
+.content_wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.element_wrapper {
+    width: 95%;
+    height: calc(95% - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar_wrapper {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+
+    >div {
+        width: 25%;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 1px 15px 8px rgb(0 0 0 / 75%);
+        font-weight: bold;
+        box-sizing: border-box;
+        border: 0px dashed transparent;
+        cursor: pointer;
+    }
+
+    >div:hover {
+        border: 2px dashed;
+    }
+}
+
+.content_box {
+    padding-left: 20px;
+    padding-right: 20px;
+    color: whitesmoke;
+    letter-spacing: 1px;
+}
+
+
+@media only screen and (max-width: 400px) {
+    .content_box {
+        letter-spacing: 0px;
+    }
+
+    .navbar_wrapper {
+        >div {
+            font-size: 12px;
+        }
+    }
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #8b8b8b #ffffff00;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 4px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff00;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #8b8b8b;
+    border-radius: 15px;
+    border: 0px solid #ffffff00;
+}

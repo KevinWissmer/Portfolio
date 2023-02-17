@@ -1,0 +1,44 @@
+<div class="landing_wrapper">
+    <div class="landing_content_wrapper">
+        <img class="bg_logo" src="../../assets/img/OWLWK.png" alt="" srcset="" [ngStyle]="{'filter': uiService.greyfilter}"> 
+ 
+
+        <div class="img_wrapper">
+            <img src="../../assets/img/profile.png" alt="" srcset="">
+        </div>
+        <div class="name_wrapper">
+            <div class="name" [ngStyle]="{'color': uiService.colorscheme[0],'border-color': uiService.colorscheme[0]}">
+                <h1>Kevin Wißmer</h1>
+            </div>
+            <div class="slogan"  [ngStyle]="{'color': uiService.colorscheme[0],'border-color': uiService.colorscheme[0]}">
+                {{textService.landingPage.actual[0]}}
+            </div>
+        </div>
+        <div class="headline_wrapper" (click)="openPortfolio(); uiService.changeRouteParam(uiService.sections[0])" [ngStyle]="{'border-color': uiService.colorscheme[0]}">
+            <div class="btn_fan" *ngFor="let fanIndex of [0,1,2]"
+                [ngStyle]="{'background-color': uiService.colorscheme[2 - fanIndex], 'transform': 'rotate(-' + (45 - fanIndex * 15)  + 'deg)'}">
+            </div>
+            <div></div>
+            <div class="btn_fan_text" [ngStyle]="{'color': uiService.colorscheme[0]}">
+                {{textService.landingPage.actual[1]}}
+            </div>
+            <div class="btn_box">
+                <div *ngFor="let fan of [0,1,2,3,4]; index as k;" class="arrow_right" [ngStyle]="{'left': - (k) * 10  + 'px', 'animation-delay': 100 * k +'ms',
+                     'border-top': '3px solid ' + uiService.colorscheme[0],
+                     'border-right': '3px solid ' + uiService.colorscheme[1]}"></div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="fan_wrapper">
+        <div *ngFor="let fan of [0,1,2]">
+            <div class="fan_rotated" [ngClass]="{'open_animation_rotated': uiService.portfolioOpend }"
+                [ngStyle]="{'background-color': uiService.colorscheme[fan], 'transform': 'rotate(-' + ((angle * 3) - fan * angle)  + 'deg)'}">
+            </div>
+            <div class="fan_straight" [ngClass]="{'open_animation_straight': uiService.portfolioOpend }"
+            [ngStyle]="{'background-color': uiService.colorscheme[fan], 'left': 88 + 4 * fan + '%', 'transition-delay': 150 + fan * 50 +'ms'}"></div>
+        </div>
+    </div>
+</div>

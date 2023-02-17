@@ -1,0 +1,70 @@
+<div class="component_wrapper">
+    <div class="left_side_wrapper">
+        <div class="headline_wrapper" [ngStyle]="{'border-color': uiService.colorscheme[0]}">
+            <div class="btn_fan" *ngFor="let fanIndex of [0,1,2]"
+                [ngStyle]="{'background-color': uiService.colorscheme[2 - fanIndex], 'transform': 'rotate(-' + (45 - fanIndex * 15)  + 'deg)'}">
+            </div>
+            <h1 [ngStyle]="{'color': uiService.colorscheme[0]}">
+                {{textService.projectPage.actual[3]}}
+            </h1>
+        </div>
+        <div class="upper_corner"></div>
+        <div class="bottom_corner"></div>
+        <div class="btn_wrapper">
+            <div *ngFor="let project of uiService.projects" (click)="uiService.currentProject = project; uiService.changeRouteParam('projects')" class="single_btn_wrapper">
+
+                <div class="active_bg" [ngStyle]="{'background-color': uiService.colorscheme[1]}"
+                    [ngClass]="{'btn_active': uiService.currentProject.name == project.name }"></div>
+                <div class="btn_text" [ngStyle]="{'color': uiService.colorscheme[0], 'border': '2px dashed ' + uiService.colorscheme[0]}">{{project.name}}</div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="right_side_wrapper">
+        <div *ngFor="let project of uiService.projects; index as i;" class="element_wrapper"
+            [ngStyle]="{'background-color': uiService.colorscheme[2]}"
+            [ngClass]="{'element_open': uiService.currentProject.name == project.name }">
+            <div class="element_content_wrapper">
+                <div class="element_content_head">
+                    <div class="skilllist_wrapper">
+                        <h2 [ngStyle]="{'color': uiService.colorscheme[0]}">{{project.name}}</h2>
+                        <div class="skilllist">
+                            <div class="single_skill" *ngFor="let skill of project.skills, index as k"
+                                [ngStyle]="{'color': uiService.colorscheme[0]}">
+                                <div>{{skill}}</div>
+                                <div *ngIf="k != project.skills.length -1">|</div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="../../assets/img/projects/{{project.img}}" alt="" srcset="">
+                </div>
+                <div class="element_content_text">
+                    <p>{{textService.projectPage.actual[i]}}</p>
+                </div>
+                <div class="element_content_footer">
+
+                    <a class="link_btn_wrapper" *ngFor="let link of project.links" [attr.href]=link.url>
+                        <div class="headline_wrapper headline_wrapper_link" [ngStyle]="{'border-color': uiService.colorscheme[0]}">
+                            <div class="btn_fan" *ngFor="let fanIndex of [0,1,2]"
+                                [ngStyle]="{'background-color': uiService.colorscheme[2 - fanIndex], 'transform': 'rotate(-' + (45 - fanIndex * 15)  + 'deg)'}">
+                            </div>
+                            <div class="btn_fan_text" [ngStyle]="{'color': uiService.colorscheme[0]}">
+                                {{link.name}}
+                            </div>
+                            <div class="btn_box">
+                                <div *ngFor="let fan of [0,1,2]; index as k;" class="arrow_right" [ngStyle]="{'left': - (k) * 10  + 'px', 'animation-delay': 100 * k +'ms',
+                                     'border-top': '3px solid ' + uiService.colorscheme[0],
+                                     'border-right': '3px solid ' + uiService.colorscheme[1]}"></div>
+                            </div>
+                        </div>
+
+
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

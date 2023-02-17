@@ -1,0 +1,26 @@
+.app_wrapper{
+    height: 100%;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.app_landing{
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+}
+
+.app_portfolio_wrapper{
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    left: 105%;
+    z-index: 4;
+}
+
+
+.open_animation{
+    left: 0 !important;
+    transition: all 200ms ease-in-out 300ms;
+}

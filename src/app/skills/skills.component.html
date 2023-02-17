@@ -1,0 +1,42 @@
+<div class="component_wrapper">
+    <div class="left_side_wrapper">
+        <div class="headline_wrapper" [ngStyle]="{'border-color': uiService.colorscheme[0]}">
+            <div class="btn_fan" *ngFor="let fanIndex of [0,1,2]" [ngStyle]="{'background-color': uiService.colorscheme[2 - fanIndex], 'transform': 'rotate(-' + (45 - fanIndex * 15)  + 'deg)'}"></div>
+            <h1  [ngStyle]="{'color': uiService.colorscheme[0]}">
+                SKILLS
+            </h1>
+        </div>
+        <div class="upper_corner"></div>
+        <div class="bottom_corner"></div>
+        <div class="btn_wrapper">
+            <div *ngFor="let skill of uiService.skills" (click)="uiService.currentskill = skill; uiService.changeRouteParam('skills')" class="single_btn_wrapper">
+
+                <div class="active_bg" [ngStyle]="{'background-color': uiService.colorscheme[1]}"
+                    [ngClass]="{'btn_active': uiService.currentskill.name == skill.name }"></div>
+                <div class="btn_text" [ngStyle]="{'color': uiService.colorscheme[0], 'border': '2px dashed ' + uiService.colorscheme[0]}">{{skill.name}}</div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="right_side_wrapper">
+        <div *ngFor="let skill of uiService.skills; index as i;" class="element_wrapper "
+            [ngStyle]="{'background-color': uiService.colorscheme[2]}"
+            [ngClass]="{'element_open': uiService.currentskill.name == skill.name }">
+            <div class="element_content_wrapper">
+                <div class="element_content_head">
+                    <img *ngIf="skill.imgList[0].length > 0" src="../../assets/img/logo/{{skill.imgList[0]}}" alt="" srcset="">
+                </div>
+                <div class="element_content_text">
+                    <p> {{textService.skillsPage.actual[i]}} </p>
+                </div>
+                <div class="element_content_footer">
+                    <img src="../../assets/img/logo/{{skill.imgList[1]}}" alt="" srcset="">
+                    <img src="../../assets/img/logo/{{skill.imgList[2]}}" alt="" srcset="">
+                    <img src="../../assets/img/logo/{{skill.imgList[3]}}" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

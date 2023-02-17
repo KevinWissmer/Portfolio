@@ -1,0 +1,60 @@
+<div class="start_wrapper">
+    <img class="bg_logo" src="../../assets/img/OWLWK.png" alt="" srcset="" [ngStyle]="{'filter': uiService.greyfilter}">
+
+    <div class="headline_wrapper" [ngStyle]="{'border-color': uiService.colorscheme[0]}">
+        <div class="btn_fan" *ngFor="let fanIndex of [0,1,2]" [ngStyle]="{'background-color': uiService.colorscheme[2 - fanIndex], 'transform': 'rotate(-' + (45 - fanIndex * 15)  + 'deg)'}"></div>
+        <h1  [ngStyle]="{'color': uiService.colorscheme[0]}">
+            {{textService.startPage.actual[0]}}
+        </h1>
+    </div>
+    
+
+    <div class="leftside topside">
+        <div class="element_wrapper" [ngStyle]="{'background-color': uiService.colorscheme[0]}">
+            <div class="element_content_wrapper left_orientated">
+                <div class="pos_rel">
+                    <img class="logo_right" src="../../assets/img/logo/uni_logo.png" alt="" srcset="">
+                    <h1 [ngStyle]="{'color': uiService.colorscheme[0]}">{{textService.startPage.actual[1]}}</h1>
+                    <div>
+                        {{textService.startPage.actual[2]}}
+                    </div>
+                </div>
+                <img src="../../assets/img/Uni_Hannover.jpg" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+
+    <div class="rightside">
+        <div class="element_wrapper" [ngStyle]="{'background-color': uiService.colorscheme[0]}">
+            <div class="element_content_wrapper right_orientated">
+                <div class="pos_rel">
+                    <img class="logo_left" src="../../assets/img/logo/bootcamp_logo.png" alt="" srcset="">
+                    <h1 [ngStyle]="{'color': uiService.colorscheme[0]}">BOOTCAMP</h1>
+                    <div>
+                        {{textService.startPage.actual[3]}}
+                    </div>
+                </div>
+                <img src="../../assets/img/coding.jpg" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+
+    <div class="leftside bottomside">
+        <div class="element_wrapper" [ngStyle]="{'background-color': uiService.colorscheme[0]}">
+            <div class="element_content_wrapper left_orientated">
+
+                <div class="pos_rel">
+                    <img class="logo_right" src="../../assets/img/logo/mentor_logo.png" alt="" srcset="">
+                    <h1 [ngStyle]="{'color': uiService.colorscheme[0]}">CODING-MENTOR</h1>
+                    <div>
+                        {{textService.startPage.actual[4]}}
+                    </div>
+                </div>
+                <img src="../../assets/img/mentor.jpg" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
